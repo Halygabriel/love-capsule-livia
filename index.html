@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="is-loading" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#7a2948" name="theme-color"/>
+<meta content="Uma experiência romântica interativa feita especialmente para Lívia." name="description"/>
+<title>Para Lívia — um lugar só nosso</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link crossorigin="" href="https://images.pexels.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+<script id="experienceBoot">try{const s=JSON.parse(localStorage.getItem('livia-experience-settings-v1')||'{}');if(s.theme==='dark')document.documentElement.dataset.theme='dark';if(s.reduceMotion)document.documentElement.classList.add('user-reduce-motion')}catch(e){}</script><link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div aria-live="polite" class="site-loader" id="siteLoader" role="status">
+<div class="loader-mark"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path></svg></div>
+<p>Preparando as memórias</p>
+<div class="loader-track"><span id="loaderBar"></span></div>
+<strong id="loaderPercent">0%</strong>
+</div><div aria-hidden="true" class="floating-orbs"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span><span class="orb orb-4"></span><span class="orb orb-5"></span><span class="orb orb-6"></span><span class="orb orb-7"></span><span class="orb orb-8"></span></div>
+<header class="hero" id="inicio"><div aria-hidden="true" class="hero-media"></div><img alt="" aria-hidden="true" class="asset-preload" hidden="" src="assets/images/hero-couple.jpg"/>
+<div aria-hidden="true" class="hero-orbit hero-orbit-one"></div>
+<div aria-hidden="true" class="hero-orbit hero-orbit-two"></div>
+<div class="hero-content">
+<span class="eyebrow">Uma experiência feita para você</span>
+<h1>Feliz aniversário,<br/><em>Lívia.</em></h1>
+<p>Um pequeno arquivo de carinho: cartas, lembranças, descobertas e detalhes para você abrir no seu tempo.</p>
+<button class="button button-primary" id="startButton" type="button">
+<span>Começar a surpresa</span><svg aria-hidden="true" class="button-icon" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path></svg>
+</button>
+</div>
+<a aria-label="Ir para a primeira memória" class="scroll-cue" href="#carta">
+<span>descubra aos poucos</span><svg aria-hidden="true" class="scroll-icon" viewbox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+</a>
+</header>
+<nav aria-label="Navegação da experiência" class="topbar">
+<a class="brand" href="#inicio"><span class="brand-mark"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path></svg></span></a>
+<div aria-live="polite" class="memory-progress">
+<div class="memory-copy"><span>Memórias descobertas</span><strong id="memoryCount">0 / 0</strong></div>
+<div aria-hidden="true" class="progress-track"><span id="progressBar"></span></div>
+</div>
+<button aria-controls="experiencePanel" aria-expanded="false" aria-label="Abrir opções da experiência" class="experience-menu-toggle" id="experienceMenuToggle" type="button">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button></nav><div aria-hidden="true" class="experience-panel-backdrop" id="experiencePanelBackdrop"></div><aside aria-hidden="true" aria-label="Opções da experiência" class="experience-panel" id="experiencePanel" inert role="dialog" aria-modal="true">
+<div class="experience-panel-head">
+<div><strong>Opções</strong></div>
+<button aria-label="Fechar opções" class="panel-close" id="experiencePanelClose" type="button"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+</div>
+<div class="panel-memory">
+<div><span>Memórias descobertas</span><strong id="panelMemoryCount">0 / 0</strong></div>
+<div class="panel-progress"><span id="panelProgressBar"></span></div>
+</div>
+<div class="panel-group">
+<span class="panel-label">Tema</span>
+<div aria-label="Escolher tema" class="theme-switcher" role="group">
+<button aria-pressed="true" data-theme-choice="light" type="button"><span class="theme-dot theme-dot-light"></span>Claro</button>
+<button aria-pressed="false" data-theme-choice="dark" type="button"><span class="theme-dot theme-dot-dark"></span>Noite</button>
+</div>
+</div>
+<div class="panel-group panel-controls">
+<label class="panel-toggle-row"><span><strong>Música</strong><small>Ligar ou pausar a trilha</small></span><input id="panelMusicToggle" type="checkbox"/><i></i></label>
+<label class="panel-volume-row"><span>Volume</span><input id="panelMusicVolume" max="1" min="0" step="0.01" type="range" value="0.42"/></label>
+<label class="panel-toggle-row"><span><strong>Reduzir animações</strong><small>Uma navegação mais calma</small></span><input id="panelReduceMotion" type="checkbox"/><i></i></label>
+</div>
+<div class="panel-group">
+<span class="panel-label">Capítulos</span>
+<nav aria-label="Ir para capítulo" class="panel-chapters">
+<a data-chapter-target="carta" href="#carta"><span>01</span>Carta</a>
+<a data-chapter-target="tempo" href="#tempo"><span>02</span>Nosso tempo</a>
+<a data-chapter-target="livia-pelos-meus-olhos" href="#livia-pelos-meus-olhos"><span>03</span>Pelos meus olhos</a>
+<a data-chapter-target="caixinhas" href="#caixinhas"><span>04</span>Caixinhas</a>
+<a data-chapter-target="maquina" href="#maquina"><span>05</span>Máquina</a>
+<a data-chapter-target="motivos" href="#motivos"><span>06</span>Motivos</a>
+<a data-chapter-target="historias" href="#historias"><span>07</span>Histórias</a>
+<a data-chapter-target="final" href="#final"><span>08</span>Nosso futuro</a>
+<a class="secret-nav-link" data-chapter-target="carta-secreta" hidden="" href="#carta-secreta"><span>✦</span>Carta secreta</a>
+</nav>
+</div>
+<button class="panel-reset" id="panelResetExperience" type="button">Recomeçar experiência</button>
+</aside><nav aria-label="Navegação rápida pelos capítulos" class="chapter-rail" id="chapterRail">
+<a data-chapter-target="carta" href="#carta"><span>Carta</span></a>
+<a data-chapter-target="tempo" href="#tempo"><span>Nosso tempo</span></a>
+<a data-chapter-target="livia-pelos-meus-olhos" href="#livia-pelos-meus-olhos"><span>Pelos meus olhos</span></a>
+<a data-chapter-target="caixinhas" href="#caixinhas"><span>Caixinhas</span></a>
+<a data-chapter-target="maquina" href="#maquina"><span>Máquina</span></a>
+<a data-chapter-target="motivos" href="#motivos"><span>Motivos</span></a>
+<a data-chapter-target="historias" href="#historias"><span>Histórias</span></a>
+<a data-chapter-target="final" href="#final"><span>Nosso futuro</span></a>
+<a class="secret-nav-link" data-chapter-target="carta-secreta" hidden="" href="#carta-secreta"><span>Carta secreta</span></a>
+</nav><div class="continue-card" hidden="" id="continueCard">
+<button aria-label="Fechar" class="continue-close" id="continueClose" type="button">×</button>
+<span>Que bom ter você de volta.</span>
+<strong id="continueTitle">Continuar de onde parou?</strong>
+<button class="continue-button" id="continueButton" type="button">Continuar</button>
+</div><div class="unlock-toast" hidden="" id="unlockToast">
+<span>Você encontrou todas as memórias.</span><strong>Daniel deixou uma carta para você.</strong>
+<button id="unlockGo" type="button">Abrir carta</button>
+</div>
+<main>
+<section class="section section-paper" id="carta">
+<div class="section-heading reveal-item">
+<span>Capítulo 01</span><h2>Uma carta para começar</h2>
+<p>Antes de qualquer surpresa, algumas palavras que eu queria deixar guardadas aqui.</p>
+</div>
+<article class="letter-card reveal-item" data-memory="letter" data-memory-mode="view">
+<p>Meu amor, eu queria preparar algo que fosse além de um presente comum. Então transformei algumas ideias, lembranças e pequenos gestos em um lugar feito só para você. Talvez ele não consiga resumir tudo o que sinto, mas cada detalhe aqui foi pensado para lembrar o quanto a sua presença torna os meus dias mais leves e especiais.</p>
+<p>Desejo que este novo ciclo traga tranquilidade, conquistas, aventuras e muitos motivos para sorrir. Quero continuar ao seu lado nos dias simples e nos inesquecíveis, comemorando suas vitórias, apoiando seus sonhos e construindo novas histórias com você.</p>
+<p class="signature">Com todo o meu carinho. De Daniel.</p>
+</article>
+</section>
+<section class="section relationship-section" id="tempo">
+<div class="section-heading centered reveal-item">
+<span>Capítulo 02</span><h2>O tempo que a gente já viveu</h2>
+<p>Desde 12 de junho de 2024, atualizado em tempo real.</p>
+</div>
+<div class="counter-card reveal-item" data-memory="counter" data-memory-mode="view">
+<div class="counter-grid">
+<div class="counter-item"><strong id="years">0</strong><span>anos</span></div>
+<div class="counter-item"><strong id="months">0</strong><span>meses</span></div>
+<div class="counter-item"><strong id="days">0</strong><span>dias</span></div>
+<div class="counter-item"><strong id="hours">00</strong><span>horas</span></div>
+<div class="counter-item"><strong id="minutes">00</strong><span>minutos</span></div>
+<div class="counter-item"><strong id="seconds">00</strong><span>segundos</span></div>
+</div>
+<div class="counter-foot"><span class="pulse-dot"></span><span>continuamos contando</span></div>
+</div>
+</section>
+<section class="section portrait-section" id="livia-pelos-meus-olhos">
+<div class="section-heading reveal-item">
+<span>Capítulo 03</span><h2>Lívia pelos meus olhos</h2>
+<p>Uma seleção mais refinada, com enquadramentos equilibrados e imagens preparadas para preencher cada card com mais elegância.</p>
+</div>
+<div class="portrait-grid">
+<figure class="portrait-card reveal-item" data-memory="portrait-1" data-memory-mode="view">
+<button aria-label="Ampliar foto 1 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 1" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/33867539/pexels-photo-33867539.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>O sorriso que muda o clima de qualquer dia.</strong><span>Sempre existe alguma coisa especial quando você sorri de verdade.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-2" data-memory-mode="view">
+<button aria-label="Ampliar foto 2 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 2" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/7523077/pexels-photo-7523077.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Bonita até nos momentos mais distraídos.</strong><span>É justamente quando você não está tentando que eu mais gosto de observar seus detalhes.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-3" data-memory-mode="view">
+<button aria-label="Ampliar foto 3 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 3" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/3958866/pexels-photo-3958866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Minha companhia favorita para qualquer aventura.</strong><span>Com você, até um passeio simples consegue virar lembrança boa.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-4" data-memory-mode="view">
+<button aria-label="Ampliar foto 4 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 4" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/10460463/pexels-photo-10460463.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Seu jeito atento de olhar o mundo.</strong><span>Você encontra beleza e significado em detalhes que muita gente deixaria passar.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-5" data-memory-mode="view">
+<button aria-label="Ampliar foto 5 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 5" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/20744304/pexels-photo-20744304.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>A expressão que eu conheço de longe.</strong><span>Um olhar seu já é suficiente para dizer mais do que várias palavras.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-6" data-memory-mode="view">
+<button aria-label="Ampliar foto 6 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 6" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>A mulher que deixa sua personalidade em tudo.</strong><span>No jeito de falar, de se vestir, de escolher e de sonhar: sempre existe algo que é só seu.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-7" data-memory-mode="view">
+<button aria-label="Ampliar foto 7 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 7" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Você transformando qualquer cenário.</strong><span>Não importa o lugar; quando você está nele, ele fica mais bonito para mim.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-8" data-memory-mode="view">
+<button aria-label="Ampliar foto 8 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 8" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/7398695/pexels-photo-7398695.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Mais uma versão sua que eu guardaria para sempre.</strong><span>Porque eu nunca me canso de descobrir novos jeitos de te admirar.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-9" data-memory-mode="view">
+<button aria-label="Ampliar foto 9 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 9" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/10260753/pexels-photo-10260753.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>A protagonista da própria história.</strong><span>E eu gosto muito de ter a sorte de acompanhar alguns capítulos de perto.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-10" data-memory-mode="view">
+<button aria-label="Ampliar foto 10 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 10" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/19142483/pexels-photo-19142483.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Concentrada, espontânea e completamente você.</strong><span>Até os momentos mais comuns acabam ficando especiais na memória.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-11" data-memory-mode="view">
+<button aria-label="Ampliar foto 11 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 11" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/33614428/pexels-photo-33614428.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Um olhar que eu reconheceria em qualquer lugar.</strong><span>A mesma Lívia, com mil detalhes diferentes que continuam me encantando.</span></figcaption>
+</figure><figure class="portrait-card reveal-item" data-memory="portrait-12" data-memory-mode="view">
+<button aria-label="Ampliar foto 12 de Lívia" class="photo-button" type="button">
+<span class="photo-frame portrait-frame">
+<img alt="Retrato ilustrativo de Lívia 12" decoding="async" height="1250" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1000"/>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption><strong>Mais um detalhe bonito para fechar a coleção.</strong><span>Um último retrato para completar a galeria com o mesmo cuidado dos outros.</span></figcaption>
+</figure>
+</div>
+</section>
+<section class="section surprise-section" id="caixinhas">
+<div class="section-heading reveal-item">
+<span>Capítulo 04</span><h2>Caixinhas-surpresa</h2>
+<p>Abra quando quiser. Cada caixa muda de estado, revela a mensagem e entra no seu progresso.</p>
+</div>
+<div class="surprise-grid">
+<button class="surprise-box reveal-item" data-memory="box-1" data-memory-mode="interaction" data-message="Respira. Você não precisa resolver tudo de uma vez. Quero estar perto para dividir o peso, ouvir você e lembrar que um dia difícil não diminui tudo o que você já conquistou." type="button">
+<span class="surprise-icon"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7ZM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7Z"></path></svg></span><span class="surprise-kicker">Abra em um dia difícil</span><strong>Um lembrete de calma</strong><span class="surprise-hint">toque para abrir</span><span class="surprise-message"></span>
+</button>
+<button class="surprise-box reveal-item" data-memory="box-2" data-memory-mode="interaction" data-message="Eu adoro o jeito como você transforma coisas pequenas em lembranças grandes. Uma conversa, um passeio, uma foto distraída — com você, tudo ganha uma história." type="button">
+<span class="surprise-icon"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M14.5 4H9.5L8 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4l-1.5-2Z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span><span class="surprise-kicker">Uma coisa que eu adoro</span><strong>Seu jeito de guardar o mundo</strong><span class="surprise-hint">toque para abrir</span><span class="surprise-message"></span>
+</button>
+<button class="surprise-box reveal-item" data-memory="box-3" data-memory-mode="interaction" data-message="Este vale dá direito a escolher nosso próximo encontro: filme, comida, passeio, viagem curta ou qualquer plano simples que faça você feliz. Eu cuido do resto." type="button">
+<span class="surprise-icon"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M2 9a3 3 0 0 0 0 6v4h20v-4a3 3 0 0 0 0-6V5H2v4Z"></path><path d="M13 5v2M13 17v2M13 10v4"></path></svg></span><span class="surprise-kicker">Vale-presente</span><strong>Você escolhe o próximo capítulo</strong><span class="surprise-hint">toque para abrir</span><span class="surprise-message"></span>
+</button>
+</div>
+</section>
+<section class="section machine-section claw-game-section" id="maquina">
+<div class="section-heading reveal-item">
+<span>Capítulo 05</span>
+<h2>A máquina de mensagens</h2>
+<p>Mova a garra, escolha uma cápsula e descubra quem deixou uma mensagem para você. Uma cápsula por vez.</p>
+</div>
+<div class="claw-game reveal-item" data-memory="machine" data-memory-mode="interaction" id="clawGame">
+<div class="claw-game-layout">
+<div class="claw-game-machine-column">
+<div class="claw-game-machine">
+<div class="claw-game-marquee">
+<span>Mensagens para Lívia</span>
+<strong>Uma cápsula por vez</strong>
+</div>
+<div class="claw-game-cabinet">
+<div class="claw-game-glass" id="clawGameGlass">
+<div aria-hidden="true" class="claw-game-reflection"></div>
+<div aria-hidden="true" class="claw-game-rail"></div>
+<div aria-hidden="true" class="claw-game-carriage" id="clawGameCarriage">
+<div class="claw-game-cable" id="clawGameCable">
+<div class="claw-game-claw-assembly" id="clawGameAssembly">
+<svg aria-hidden="true" class="claw-game-claw" id="clawGameClaw" viewbox="0 0 140 150">
+<defs>
+<lineargradient id="clawGameHubGradient" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#f0afc2"></stop>
+<stop offset="100%" stop-color="#b65f79"></stop>
+</lineargradient>
+</defs>
+<rect class="claw-game-hub" height="30" rx="15" width="66" x="37" y="0"></rect>
+<circle class="claw-game-joint" cx="46" cy="22" r="7"></circle>
+<circle class="claw-game-joint-core" cx="46" cy="22" r="3.5"></circle>
+<circle class="claw-game-joint" cx="94" cy="22" r="7"></circle>
+<circle class="claw-game-joint-core" cx="94" cy="22" r="3.5"></circle>
+<g class="claw-game-finger-group claw-game-finger-left">
+<path class="claw-game-finger-path" d="M46 22 C25 40 18 73 24 100 C27 117 34 128 43 137"></path>
+<path class="claw-game-finger-tip" d="M43 137 L57 140"></path>
+</g>
+<g class="claw-game-finger-group claw-game-finger-right">
+<path class="claw-game-finger-path" d="M94 22 C115 40 122 73 116 100 C113 117 106 128 97 137"></path>
+<path class="claw-game-finger-tip" d="M97 137 L83 140"></path>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div aria-label="Cápsulas com mensagens" class="claw-game-balls-area" id="clawGameBallsArea"></div>
+<div aria-hidden="true" class="claw-game-floor"></div>
+</div>
+<div class="claw-game-panel">
+<div aria-live="polite" class="claw-game-status" id="clawGameStatus">Posicione a garra sobre uma cápsula e aperte PEGAR ou a tecla Espaço.</div>
+<div aria-label="Controles da máquina de garra" class="claw-game-controls">
+<button aria-label="Mover para a esquerda" class="claw-game-direction-button" id="clawGameBtnLeft" type="button">←</button>
+<div aria-hidden="true" class="claw-game-joystick" id="clawGameJoystick">
+<span class="claw-game-joystick-base"></span>
+<span class="claw-game-joystick-stick"></span>
+<span class="claw-game-joystick-knob"></span>
+</div>
+<button aria-label="Mover para a direita" class="claw-game-direction-button" id="clawGameBtnRight" type="button">→</button>
+<button class="claw-game-grab-button" id="clawGameBtnGrab" type="button">PEGAR</button>
+</div>
+</div>
+</div>
+</div>
+<p class="claw-game-keyboard-hint">No teclado: use ← → para mover e <kbd>Espaço</kbd> para descer a garra.</p>
+</div>
+<aside class="claw-game-sidebar">
+<div class="claw-game-sidebar-heading">
+<span>Descobertas</span>
+<h3>Mensagens reveladas</h3>
+<p id="clawGameCounter">0 descobertas encontradas</p>
+</div>
+<ul class="claw-game-message-list" id="clawGameMessageList">
+<li class="claw-game-empty-state" id="clawGameEmptyState">Nenhuma mensagem foi revelada ainda. A primeira cápsula está esperando por você.</li>
+</ul>
+</aside>
+</div>
+</div>
+</section>
+<section class="section reasons-section" id="motivos">
+<div class="section-heading reveal-item">
+<span>Capítulo 06</span><h2>20 motivos para sorrir</h2>
+<p>Sem motivo secreto extra: são 20, e cada estrela só conta depois que você realmente abre.</p>
+</div>
+<div class="reasons-layout reveal-item">
+<div aria-label="20 motivos para sorrir" class="stars-grid" id="starsGrid"></div>
+<div aria-live="polite" class="reason-panel" id="reasonPanel">
+<span class="reason-number" id="reasonNumber">00</span>
+<p id="reasonText">Escolha uma estrela para revelar um motivo.</p>
+</div>
+</div>
+</section>
+<section class="section stories-section" id="historias">
+<div class="section-heading reveal-item">
+<span>Capítulo 07</span><h2>Fotos que contam histórias</h2>
+<p>Doze imagens únicas, sem repetição. Clique em qualquer foto para abrir a versão inteira.</p>
+</div>
+<div class="stories-grid">
+<figure class="story-card reveal-item" data-memory="story-1" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 1" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 1" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/36484495/pexels-photo-36484495.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">01</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Alguns dias ficam especiais só porque foram vividos juntos.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-2" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 2" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 2" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/15425128/pexels-photo-15425128.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">02</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Um momento simples que eu escolheria viver outra vez.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-3" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 3" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 3" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">03</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Entre risadas e conversas, a gente foi construindo o nosso lugar.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-4" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 4" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Casal jovem sorrindo junto ao ar livre" decoding="async" height="853" loading="eager" referrerpolicy="no-referrer" src="https://cdn.pixabay.com/photo/2016/11/19/12/09/couple-1838940_1280.jpg" width="1280"/>
+<span class="photo-index">04</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Uma lembrança para guardar quando bater saudade.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-5" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 5" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Casal abraçado na praia de São Paulo" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="assets/images/story-05.jpg" width="1200"/>
+<span class="photo-index">05</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Seu jeito de estar por perto torna tudo mais leve.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-6" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 6" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 6" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/35797783/pexels-photo-35797783.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">06</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Nem sempre precisamos de um grande plano para ter um dia inesquecível.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-7" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 7" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 7" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://cdn.pixabay.com/photo/2017/09/23/11/00/love-2778469_1280.jpg" width="1200"/>
+<span class="photo-index">07</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>A melhor parte de sair é saber que vou dividir o momento com você.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-8" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 8" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 8" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/3692876/pexels-photo-3692876.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">08</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Uma foto bonita para lembrar de uma sensação ainda melhor.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-9" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 9" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 9" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://cdn.pixabay.com/photo/2019/08/30/04/39/young-couple-4440383_1280.jpg" width="1200"/>
+<span class="photo-index">09</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Caminhar ao seu lado sempre parece um bom destino.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-10" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 10" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 10" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://cdn.pixabay.com/photo/2016/10/16/14/21/wedding-1745240_1280.jpg" width="1200"/>
+<span class="photo-index">10</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Alguns sorrisos merecem virar fotografia.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-11" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 11" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 11" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://cdn.pixabay.com/photo/2016/10/06/05/19/happy-valentines-day-1718244_1280.jpg" width="1200"/>
+<span class="photo-index">11</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Meu lugar favorito costuma ser onde você está.</figcaption>
+</figure><figure class="story-card reveal-item" data-memory="story-12" data-memory-mode="view">
+<button aria-label="Ampliar lembrança 12" class="photo-button" type="button">
+<span class="photo-frame story-frame">
+<img alt="Foto ilustrativa de casal 12" decoding="async" height="900" loading="eager" referrerpolicy="no-referrer" src="https://images.pexels.com/photos/8103696/pexels-photo-8103696.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1" width="1200"/>
+<span class="photo-index">12</span>
+<span class="photo-zoom"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"></path></svg></span>
+</span>
+</button>
+<figcaption>Os momentos comuns também merecem espaço na nossa história.</figcaption>
+</figure>
+</div>
+</section>
+<section class="section final-wrap" id="final">
+<div class="final-card reveal-item">
+<span class="final-spark"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M12 3 13.6 8.4 19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3Z"></path><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"></path></svg></span>
+<span class="eyebrow">Capítulo 08 • Nosso futuro</span>
+<h2>Ainda temos muito para viver.</h2>
+<p>Ainda quero conhecer lugares com você, comemorar suas conquistas e dividir aqueles dias em que o melhor plano é ficar por perto. As lembranças que guardamos aqui são só uma parte da nossa história. Gosto de pensar em tudo o que ainda vamos viver juntos.</p>
+<button class="button button-secondary" id="finalButton" type="button"><span>Uma mensagem para você</span><svg aria-hidden="true" class="button-icon" viewbox="0 0 24 24"><path d="M12 3 13.6 8.4 19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3Z"></path><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"></path></svg></button>
+<p class="secret-letter-hint" id="secretLetterHint">Ainda há uma carta guardada. Descubra as memórias que faltam para abrir.</p>
+</div>
+</section><section class="section secret-letter-section" hidden="" id="carta-secreta">
+<div class="secret-letter-shell reveal-item">
+<div class="secret-letter-intro">
+<span class="eyebrow">Todas as memórias encontradas</span>
+<h2>Uma carta que guardei para você.</h2>
+<p>Você encontrou todas as memórias. Daniel deixou uma carta para você.</p>
+<button class="button button-secondary" id="secretLetterButton" aria-controls="secretLetterPaper" aria-expanded="false" type="button">Abrir a carta</button>
+</div>
+<article aria-hidden="true" class="secret-letter-paper" id="secretLetterPaper">
+<div class="secret-letter-content"><div class="secret-letter-body">
+<p>Meu amor, se você chegou até aqui, então abriu cada detalhe que eu preparei pensando em você. Mas a parte mais bonita é saber que este site termina e a nossa história não.</p>
+<p>Quero continuar guardando os dias simples, comemorando suas conquistas, ouvindo seus planos e descobrindo novas versões de nós dois. Não existe contador que consiga medir tudo o que ainda quero viver ao seu lado.</p>
+<p>Obrigado por ser a Lívia que transforma lugares comuns em lembranças especiais. Que este cantinho sirva só como um lembrete de uma coisa que eu espero demonstrar também fora daqui: você é muito importante para mim.</p>
+<p class="secret-signature">Com amor,<br/><strong>Daniel.</strong></p>
+
+</div></div>
+</article>
+</div>
+</section>
+</main>
+<footer class="footer"><span>Feito com carinho. De Daniel.</span><span class="footer-watermark">Cantinho da Lívia</span><button id="resetProgress" type="button"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg><span>Recomeçar descobertas</span></button></footer>
+<div aria-hidden="true" aria-labelledby="clawGameMessageSender" aria-modal="true" class="claw-game-modal" id="clawGameModal" role="dialog">
+<div class="claw-game-modal-card">
+<span class="claw-game-modal-label" id="clawGameModalLabel">Cápsula encontrada</span>
+<h3 id="clawGameMessageSender">Mensagem especial</h3>
+<div class="claw-game-modal-message" id="clawGameMessageText"></div>
+<div class="claw-game-modal-actions">
+<button class="claw-game-primary-button" id="clawGameTryAgain" type="button">Tentar novamente</button>
+<button class="claw-game-secondary-button" id="clawGameCloseModal" type="button">Fechar</button>
+</div>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="finalModalTitle" aria-modal="true" class="modal" id="finalModal" role="dialog">
+<div class="modal-backdrop" data-close-final=""></div>
+<div class="modal-card final-modal-card">
+<button aria-label="Fechar" class="modal-close" data-close-final="" type="button"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+<span class="modal-symbol"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path></svg></span>
+<span class="modal-kicker">Para os dias que vêm</span>
+<h3 id="finalModalTitle">Quero estar nos seus próximos capítulos.</h3>
+<p>Quero ouvir seus planos, torcer por você e encontrar tempo para nós, mesmo nos dias corridos. Que venham novas viagens, conversas sem pressa e pequenos motivos para rir juntos. É assim que eu imagino o nosso futuro: com você por perto.</p>
+<button class="button button-primary" data-close-final="" type="button">Guardar esta memória</button>
+</div>
+</div>
+<div aria-hidden="true" aria-modal="true" class="photo-viewer" id="photoViewer" role="dialog">
+<button aria-label="Fechar foto" class="photo-viewer-close" id="photoViewerClose" type="button"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+<img alt="" id="photoViewerImage"/>
+<p id="photoViewerCaption"></p>
+</div>
+<div class="ambient-player" id="ambientPlayer">
+<button aria-label="Tocar trilha ambiente" class="ambient-toggle" id="ambientToggle" type="button"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg></button>
+<div aria-hidden="true" class="ambient-panel" id="ambientPanel">
+<div class="ambient-copy"><span>Trilha ambiente</span><strong>Instrumental original</strong></div>
+<button aria-label="Tocar trilha" class="ambient-play" id="ambientPlay" type="button"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"></path></svg></button>
+<label class="ambient-volume"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"></path></svg><input aria-label="Volume da trilha" id="ambientVolume" max="1" min="0" step="0.01" type="range" value="0.42"/></label>
+</div>
+<audio id="ambientAudio" loop="" preload="metadata" src="assets/audio/ambient-original.mp3"></audio>
+</div>
+<script defer="" src="app.js"></script>
+</body>
+</html>
